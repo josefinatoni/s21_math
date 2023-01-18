@@ -38,8 +38,17 @@ check:
 	clang-format -n -style=google *.c *.h ./s21_functions/*.c *.h ./s21_test/*.c *.h
 	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --verbose --log-file=RESULT_VALGRIND.txt ./tests
 
-install_lcov:
+install_brew:
+	cd ~
+	curl -fsSL https://rawgit.com/kube/42homebrew/master/install.sh | zsh
+	brew install check
 	brew install lcov
+
+install_linux:
+	sudo apt update
+	sudo apt install check
+	sudo ap update
+	sudo apt install lcov
 
 clean:
 	-rm -rf *.o *.html *.gcda *.gcno *.css *.a *.gcov *.info *.out *.cfg *.txt
